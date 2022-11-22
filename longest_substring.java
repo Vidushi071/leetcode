@@ -1,0 +1,20 @@
+import java.util.HashSet;
+import java.util.Set;
+
+//longest substring without repeating character
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left =0;
+        int maxcount = 0;
+      
+        Set<Character> set = new HashSet<>();
+        for(int right = 0; right < s.length(); right++){
+            while(set.contains(s.charAt(right))){
+                set.remove(s.charAt(left++));    
+            }
+            set.add(s.charAt(right));
+            maxcount = Math.max(maxcount, right - left +1);
+        }
+    return maxcount;
+    }
+}
